@@ -1,14 +1,24 @@
 <template>
-  <h1>ventas</h1>
+  <div v-if='ventas'>
+    <h1>ventas</h1>
+    <ul>
+      <li v-for='(venta, i) in ventas' :key='i'>
+        id: {{venta.id}} - total: {{venta.total}}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
 import axios from 'axios'
 export default {
-  created () {
-    axios.get('http://127.0.0.1:4000/ventas').then((result) => {
-      console.log(result.data)
-    })
+  data: () => ({
+    ventas: null
+  }),
+  async created () {
+    const {data} = await axios.get('http://127.0.0.1:4000/ventas')
+    console.log(data)
+    this.ventas = data
   }
 }
 </script>
