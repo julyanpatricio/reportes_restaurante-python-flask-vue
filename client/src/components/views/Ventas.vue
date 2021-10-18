@@ -1,24 +1,28 @@
 <template>
-  <div v-if='ventas'>
+  <div v-if="ventas">
     <h1>ventas</h1>
     <ul>
-      <li v-for='(venta, i) in ventas' :key='i'>
-        id: {{venta.id}} - total: {{venta.total}}
+      <li v-for="(venta, i) in ventas" :key="i">
+        id: {{ venta.id }} - total: {{ venta.total }}
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import { mapState, mapActions } from 'vuex'
 export default {
-  data: () => ({
-    ventas: null
-  }),
-  async created () {
-    const {data} = await axios.get('http://127.0.0.1:4000/ventas')
-    console.log(data)
-    this.ventas = data
+  // data: () => ({
+  //   ventas: null
+  // }),
+  computed: {
+    ...mapState(['ventas'])
+  },
+  methods: {
+    ...mapActions(['getVentas'])
+  },
+  created () {
+    this.getVentas()
   }
 }
 </script>
