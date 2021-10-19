@@ -6,9 +6,10 @@ def salesByProducts():
   limit = request.args.get('limit',10)
   page = request.args.get('page',0)
   if(product):
-    return jsonify(salesGroupByProducts[product])
-  return jsonify({
-    'total quantities':salesGroupByProducts['total quantities'],
-    'total incomes':salesGroupByProducts['total incomes'],
-    'products':salesGroupByProducts['products'][(page*limit):(limit*(page+1))]
-    })
+    return jsonify({
+      'total quantities':salesGroupByProducts[product]['total quantities'],
+      'total incomes':salesGroupByProducts[product]['total incomes'],
+      'products':salesGroupByProducts[product]['products'][(page*limit):(limit*(page+1))]
+      })
+  print(salesGroupByProducts.keys())
+  return jsonify(salesGroupByProducts)
