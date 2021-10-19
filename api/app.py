@@ -15,9 +15,9 @@ if __name__ == '__main__':
   from routes.saleById import saleById
 
   app.add_url_rule('/home', view_func=home)
-  app.add_url_rule('/ventas', view_func=_sales)
-  app.add_url_rule('/ventas/categorias', view_func=salesByCategories)
-  app.add_url_rule('/ventas/productos', view_func=salesByProducts)
-  app.add_url_rule('/venta/<string:id>', view_func=saleById)
+  app.add_url_rule('/sales', view_func=_sales)
+  app.add_url_rule('/sales/categories', view_func=salesByCategories)
+  app.add_url_rule('/sales/products', view_func=salesByProducts)
+  app.add_url_rule('/sale/<string:id>', view_func=saleById)
   app.run(debug=True, port=4000)
 

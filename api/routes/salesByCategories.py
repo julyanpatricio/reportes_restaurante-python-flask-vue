@@ -2,7 +2,7 @@ from flask import request, jsonify
 from data import salesGroupByCategories
 
 def salesByCategories():
-  category = request.args.get('nombre_categoria',False)
+  category = request.args.get('category_name',False)
   limit = request.args.get('limit',10)
   page = request.args.get('page',0)
   if(category):

@@ -1,4 +1,4 @@
 export default {
-  ventas: [],
-  ventaById: {}
+  sales: [],
+  salesByCategories: {}
 }

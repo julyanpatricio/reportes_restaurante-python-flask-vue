@@ -1,9 +1,9 @@
 <template>
-  <div v-if="ventas">
+  <div v-if="sales">
     <h1>ventas</h1>
     <ul>
-      <li v-for="(venta, i) in ventas" :key="i">
-        id: {{ venta.id }} - total: {{ venta.total }}
+      <li v-for="(sale, i) in sales" :key="i">
+        id: {{ sale.id }} - total: {{ sale.total }} - date {{ sale.date_closed }}
       </li>
     </ul>
   </div>
@@ -16,13 +16,13 @@ export default {
   //   ventas: null
   // }),
   computed: {
-    ...mapState(['ventas'])
+    ...mapState(['sales'])
   },
   methods: {
-    ...mapActions(['getVentas'])
+    ...mapActions(['getSales'])
   },
   created () {
-    this.getVentas()
+    this.getSales()
   }
 }
 </script>
