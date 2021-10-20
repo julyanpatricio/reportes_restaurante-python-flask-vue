@@ -2,10 +2,10 @@ import * as types from './mutations-types'
 import axios from 'axios'
 
 export default {
-  getSales ({ commit }) {
-    axios.get('http://127.0.0.1:4000/sales')
+  getSales ({ commit }, page) {
+    axios.get(`http://127.0.0.1:4000/sales?page=${page}`)
       .then(({data}) => {
-        commit(types.GET_SALES, {sales: data})
+        commit(types.GET_SALES, {sales: data['sales'],totalSales:data['total']})
       })
   },
   getSalesByCategories ({ commit }) {

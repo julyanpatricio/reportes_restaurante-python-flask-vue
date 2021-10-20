@@ -1,8 +1,10 @@
 import * as types from './mutations-types'
 
 export default {
-  [types.GET_SALES] (state, { sales }) {
+  [types.GET_SALES] (state, { sales, totalSales }) {
+    console.log(totalSales);
     state.sales = sales
+    state.totalSales = totalSales
   },
   [types.GET_SALES_BY_CATEGORIES] (state, { salesByCategories }) {
     state.salesByCategories = salesByCategories
