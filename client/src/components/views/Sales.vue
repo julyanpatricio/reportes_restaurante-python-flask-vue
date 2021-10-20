@@ -22,8 +22,10 @@
         <md-table-cell>{{ data.waiter }}</md-table-cell>
       </md-table-row>
     </md-table>
-    <button @click="getSales(currentPage-1); currentPage--" :disabled="currentPage===1"> < </button>
-    <button @click="getSales(currentPage+1); currentPage++" :disabled="currentPage+1 ===totalSales/10"> > </button>
+    <button @click="getSales(1); currentPage=1" :disabled="currentPage===1"> First Page </button>
+    <button @click="getSales(currentPage-1); currentPage--" :disabled="currentPage===1"> Prev Page </button>
+    <button @click="getSales(currentPage+1); currentPage++" :disabled="currentPage+1 ===totalSales/10"> Next Page </button>
+    <button @click="getSales((totalSales/10)-1); currentPage=(totalSales/10)-1" :disabled="currentPage+1 ===totalSales/10"> End Page </button>
   </div>
 </template>
 
