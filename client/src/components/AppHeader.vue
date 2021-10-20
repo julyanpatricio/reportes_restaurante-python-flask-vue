@@ -6,6 +6,8 @@
       <option value="/">home</option>
       <option value="/ventas">ventas generales</option>
       <option value="/ventas/categorias">ventas por categorias</option>
+      <option value="/ventas/productos">ventas por productos</option>
+      <option value="/ventas/meseros">ventas por meseros</option>
     </select>
   </header>
 </template>
@@ -24,7 +26,7 @@ export default {
 header {
   display: block;
   height: 8%;
-  background-color: brown;
+  background-color: black;
   color: aliceblue;
   display: flex;
   flex-direction: row;

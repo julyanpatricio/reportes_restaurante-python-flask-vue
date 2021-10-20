@@ -1,4 +1,6 @@
 export default {
   sales: [],
-  salesByCategories: {}
+  salesByCategories: {},
+  salesByProducts: {},
+  salesByWaiters: {}
 }

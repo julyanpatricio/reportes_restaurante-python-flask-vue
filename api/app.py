@@ -12,12 +12,14 @@ if __name__ == '__main__':
   from routes.sales import _sales
   from routes.salesByCategories import salesByCategories
   from routes.salesByProducts import salesByProducts
+  from routes.salesByWaiters import salesByWaiters
   from routes.saleById import saleById
 
   app.add_url_rule('/home', view_func=home)
   app.add_url_rule('/sales', view_func=_sales)
   app.add_url_rule('/sales/categories', view_func=salesByCategories)
   app.add_url_rule('/sales/products', view_func=salesByProducts)
+  app.add_url_rule('/sales/waiters', view_func=salesByWaiters)
   app.add_url_rule('/sale/<string:id>', view_func=saleById)
   app.run(debug=True, port=4000)
 
