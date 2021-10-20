@@ -1,7 +1,9 @@
 import json, requests
+from orderData import merge_sort
 
 resp = requests.get('https://storage.googleapis.com/backupdatadev/ejercicio/ventas.json')
-sales = json.loads(resp.content)
+sales = merge_sort(json.loads(resp.content))
+
 
 
 salesGroupByCategories={}
