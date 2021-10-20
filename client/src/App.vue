@@ -29,4 +29,8 @@ html, body, #app{
 body{
   margin: 0;
 }
+
+.md-table-head {
+  text-align: center;
+}
 </style>

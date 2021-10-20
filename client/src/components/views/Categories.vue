@@ -1,13 +1,20 @@
 <template>
   <div v-if="salesByCategories">
-    <h1>ventas</h1>
-    <ul>
-      <li v-for="(value, key) in salesByCategories" :key="key">
-        categoria: {{ key }}
-        cantidades vendidas: {{ value['total quantities'] }}
-        ingresos totales: {{ value['total incomes'] }}
-      </li>
-    </ul>
+    <h1>ventas por categorias</h1>
+    <md-table>
+      <md-table-row>
+        <md-table-head>Categoria</md-table-head>
+        <md-table-head>Cantidades vendidas</md-table-head>
+        <md-table-head>Ingresos Totales</md-table-head>
+      </md-table-row>
+
+      <md-table-row  v-for="(value, key) in salesByCategories" :key="key">
+        <md-table-cell>{{key}}</md-table-cell>
+        <md-table-cell>{{ value['total quantities'] }}</md-table-cell>
+        <md-table-cell>{{ value['total incomes'] }}</md-table-cell>
+      </md-table-row>
+
+    </md-table>
   </div>
 </template>
 
