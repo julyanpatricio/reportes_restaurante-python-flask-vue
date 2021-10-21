@@ -44,7 +44,13 @@ export default {
         commit(types.GET_SALES_BY_PRODUCTS, {salesByProducts: data})
       })
   },
-  getSalesByWaiters ({ commit }) {
+  getSalesByWaiters ({ commit },{ dateStart, dateEnd }) {
+    if(dateStart){
+      return axios.get(`http://127.0.0.1:4000/sales/waiters?date_start=${dateStart}&date_end=${dateEnd}`)
+      .then(({data}) => {
+        commit(types.GET_SALES_BY_WAITERS, {salesByWaiters: data})
+      })
+    }
     axios.get('http://127.0.0.1:4000/sales/waiters')
       .then(({data}) => {
         commit(types.GET_SALES_BY_WAITERS, {salesByWaiters: data})
