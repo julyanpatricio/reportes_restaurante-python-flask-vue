@@ -28,8 +28,8 @@ export default {
     ...mapActions(["setDateMinSelected","setDateMaxSelected"])
   },
   created(){
-    this.dateStart = new Date(this.dateMin.replaceAll("-", "/"));
-    this.dateEnd = new Date(this.dateMax.replaceAll("-", "/"));
+    this.dateStart = this.dateMin && new Date(this.dateMin.replaceAll("-", "/"));
+    this.dateEnd = this.dateMax && new Date(this.dateMax.replaceAll("-", "/"));
   },
   watch: {
     dateMin: function (newData,oldData) {
