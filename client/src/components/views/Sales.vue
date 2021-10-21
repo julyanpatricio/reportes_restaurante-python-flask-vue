@@ -1,15 +1,6 @@
 <template>
   <div v-if="sales">
     <h1>ventas</h1>
-    <div class="container-dataPicker">
-      <md-datepicker v-model="dateStart" md-immediately>
-        <label>Desde</label>
-      </md-datepicker>
-      <md-datepicker v-model="dateEnd" md-immediately>
-        <label>Hasta</label>
-      </md-datepicker>
-      <button @click="filterByDate">Filtrar</button>
-    </div>
     <md-table>
       <md-table-row>
         <md-table-head>factura</md-table-head>
@@ -56,34 +47,29 @@ import format from "date-fns/format";
 
 export default {
   data: () => {
+
     return {
-      dateStart: null,
-      dateEnd: null,
       currentPage: 1,
     };
   },
   computed: {
-    ...mapState(["sales", "totalSales", "dateMin", "dateMax"]),
+    ...mapState(["sales", "totalSales", "dateMinSelected", "dateMaxSelected"]),
   },
   methods: {
     ...mapActions(["getSales"]),
     filterByDate() {
-      let end = this.dateEnd || new Date(this.dateMax);
-      let start = this.dateStart || new Date(this.dateMin);
       this.getSales({
         page: 1,
-        dateStart: format(start, "yyyy-MM-dd"),
-        dateEnd: format(end, "yyyy-MM-dd"),
+        dateStart: this.dateMinSelected,
+        dateEnd: this.dateMaxSelected,
       });
       this.currentPage = 1;
     },
     changePage() {
-      let end = this.dateEnd || new Date(this.dateMax);
-      let start = this.dateStart || new Date(this.dateMin);
       this.getSales({
         page: this.currentPage,
-        dateStart: format(start, "yyyy-MM-dd"),
-        dateEnd: format(end, "yyyy-MM-dd"),
+        dateStart: this.dateMinSelected,
+        dateEnd: this.dateMaxSelected,
       });
     },
   },
@@ -91,11 +77,15 @@ export default {
     this.getSales({ page: 1 });
   },
   watch: {
-    dateMin: function () {
-      this.dateStart = new Date(this.dateMin.replaceAll("-", "/"));
+    dateMinSelected: function (newData,oldData) {
+      if(newData!==oldData){
+      this.filterByDate()
+      }
     },
-    dateMax: function () {
-      this.dateEnd = new Date(this.dateMax.replaceAll("-", "/"));
+    dateMaxSelected: function (newData,oldData) {
+      if(newData!==oldData){
+      this.filterByDate()
+      }
     },
     currentPage: function () {
       this.changePage();

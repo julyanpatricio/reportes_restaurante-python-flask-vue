@@ -1,16 +1,18 @@
 <template>
   <div id="app">
     <app-header></app-header>
+    <filters></filters>
     <router-view class='container' />
   </div>
 </template>
 
 <script>
 import AppHeader from './components/AppHeader'
+import Filters from './components/Filters'
 
 export default {
   name: 'App',
-  components: { AppHeader }
+  components: { AppHeader,Filters }
 }
 </script>
 

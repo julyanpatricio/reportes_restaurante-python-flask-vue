@@ -31,5 +31,11 @@ export default {
       .then(({data}) => {
         commit(types.GET_SALES_BY_WAITERS, {salesByWaiters: data})
       })
-  }
+  },
+  setDateMinSelected ({ commit },{ dateMinSelected }) {
+        commit(types.SET_DATE_MIN_SELECTED, {dateMinSelected: dateMinSelected})
+  },
+  setDateMaxSelected ({ commit },{ dateMaxSelected }) {
+    commit(types.SET_DATE_MAX_SELECTED, {dateMaxSelected: dateMaxSelected})
+  },
 }

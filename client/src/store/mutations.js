@@ -15,5 +15,11 @@ export default {
   },
   [types.GET_SALES_BY_WAITERS] (state, { salesByWaiters }) {
     state.salesByWaiters = salesByWaiters
+  },
+  [types.SET_DATE_MIN_SELECTED] (state, { dateMinSelected }) {
+    state.dateMinSelected = dateMinSelected
+  },
+  [types.SET_DATE_MAX_SELECTED] (state, { dateMaxSelected }) {
+    state.dateMaxSelected = dateMaxSelected
   }
 }
