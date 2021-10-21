@@ -1,6 +1,6 @@
 <template>
   <div v-if="sales">
-    <h1>ventas</h1>
+    <h1>ventas generales</h1>
     <md-table>
       <md-table-row>
         <md-table-head>factura</md-table-head>
@@ -43,7 +43,6 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import format from "date-fns/format";
 
 export default {
   data: () => {
@@ -74,7 +73,8 @@ export default {
     },
   },
   created() {
-    this.getSales({ page: 1 });
+    // this.getSales({ page: 1 });
+    this.filterByDate()
   },
   watch: {
     dateMinSelected: function (newData,oldData) {
@@ -87,8 +87,10 @@ export default {
       this.filterByDate()
       }
     },
-    currentPage: function () {
+    currentPage: function (newData,oldData) {
+      if(newData!==oldData){
       this.changePage();
+      }
     },
   },
 };

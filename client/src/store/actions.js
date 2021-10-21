@@ -2,6 +2,12 @@ import * as types from './mutations-types'
 import axios from 'axios'
 
 export default {
+  getDateMinAndDateMax ({ commit }) {
+    axios.get(`http://127.0.0.1:4000/date_min_and_date_max`)
+      .then(({data}) => {
+        commit(types.GET_DATE_MIN_AND_DATE_MAX, {dateMin:data['dateMin'], dateMax:data['dateMax']})
+      })
+  },
   getSales ({ commit }, {page, dateStart, dateEnd}) {
     if(dateStart){
       return axios.get(`http://127.0.0.1:4000/sales?page=${page}&date_start=${dateStart}&date_end=${dateEnd}`)
@@ -14,14 +20,26 @@ export default {
         commit(types.GET_SALES, {sales: data['sales'],totalSales:data['total'], dateMin:data['dateMin'], dateMax:data['dateMax']})
       })
   },
-  getSalesByCategories ({ commit }) {
+  getSalesByCategories ({ commit },{ dateStart, dateEnd }) {
+    if(dateStart){
+      return axios.get(`http://127.0.0.1:4000/sales/categories?date_start=${dateStart}&date_end=${dateEnd}`)
+      .then(({data}) => {
+        commit(types.GET_SALES_BY_CATEGORIES, {salesByCategories: data})
+      })
+    }
     axios.get('http://127.0.0.1:4000/sales/categories')
       .then(({data}) => {
         commit(types.GET_SALES_BY_CATEGORIES, {salesByCategories: data})
       })
   },
-  getSalesByProducts ({ commit }) {
-    axios.get('http://127.0.0.1:4000/sales/products')
+  getSalesByProducts ({ commit },{ dateStart, dateEnd }) {
+    if(dateStart){
+      return axios.get(`http://127.0.0.1:4000/sales/products?date_start=${dateStart}&date_end=${dateEnd}`)
+      .then(({data}) => {
+        commit(types.GET_SALES_BY_PRODUCTS, {salesByProducts: data})
+      })
+    }
+    axios.get(`http://127.0.0.1:4000/sales/products`)
       .then(({data}) => {
         commit(types.GET_SALES_BY_PRODUCTS, {salesByProducts: data})
       })

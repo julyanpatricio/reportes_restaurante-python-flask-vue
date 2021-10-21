@@ -27,17 +27,19 @@ export default {
   methods: {
     ...mapActions(["setDateMinSelected","setDateMaxSelected"])
   },
+  created(){
+    this.dateStart = new Date(this.dateMin.replaceAll("-", "/"));
+    this.dateEnd = new Date(this.dateMax.replaceAll("-", "/"));
+  },
   watch: {
     dateMin: function (newData,oldData) {
       if(newData!==oldData){
       this.dateStart = new Date(this.dateMin.replaceAll("-", "/"));
-      // this.setDateMinSelected({'dateMinSelected':newData})
       }
     },
     dateMax: function (newData,oldData) {
       if(newData!==oldData){
       this.dateEnd = new Date(this.dateMax.replaceAll("-", "/"));
-      // this.setDateMaxSelected({'dateMaxSelected':newData})
       }
     },
     dateEnd: function (newData,oldData){

@@ -21,5 +21,9 @@ export default {
   },
   [types.SET_DATE_MAX_SELECTED] (state, { dateMaxSelected }) {
     state.dateMaxSelected = dateMaxSelected
+  },
+  [types.GET_DATE_MIN_AND_DATE_MAX] (state, { dateMax, dateMin }) {
+    state.dateMin = dateMin
+    state.dateMax = dateMax
   }
 }

@@ -1,18 +1,30 @@
 <template>
   <div id="app">
     <app-header></app-header>
-    <filters></filters>
+    <filters v-if="currentRoutePath !== '/'"></filters>
     <router-view class='container' />
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import AppHeader from './components/AppHeader'
 import Filters from './components/Filters'
 
 export default {
   name: 'App',
-  components: { AppHeader,Filters }
+  components: { AppHeader,Filters },
+  computed: {
+    currentRoutePath() {
+        return this.$route.path
+    }
+  },
+  methods: {
+    ...mapActions(["getDateMinAndDateMax"])
+  },
+  created() {
+    this.getDateMinAndDateMax()
+  }
 }
 </script>
 
