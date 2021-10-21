@@ -1,10 +1,11 @@
 import * as types from './mutations-types'
 
 export default {
-  [types.GET_SALES] (state, { sales, totalSales }) {
-    console.log(totalSales);
+  [types.GET_SALES] (state, { sales, totalSales, dateMin, dateMax }) {
     state.sales = sales
     state.totalSales = totalSales
+    state.dateMin = dateMin
+    state.dateMax = dateMax
   },
   [types.GET_SALES_BY_CATEGORIES] (state, { salesByCategories }) {
     state.salesByCategories = salesByCategories

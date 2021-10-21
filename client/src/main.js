@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import { MdButton, MdContent, MdTabs, MdTable,MdIcon,MdField,MdMenu,MdList } from 'vue-material/dist/components'
+import { MdButton, MdContent, MdTabs, MdTable,MdIcon,MdField,MdMenu,MdList,MdDatepicker,MdDialog } from 'vue-material/dist/components'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
  
@@ -18,6 +18,8 @@ Vue.use(MdIcon)
 Vue.use(MdField)
 Vue.use(MdMenu)
 Vue.use(MdList)
+Vue.use(MdDatepicker)
+Vue.use(MdDialog)
 
 /* eslint-disable no-new */
 new Vue({

@@ -22,6 +22,7 @@ def merge(lista1, lista2):
     resultado = []
 
     while(i < len(lista1) and j < len(lista2)):
+      # Ordeno de mayor a menor de acuerdo a la fecha en que se cerro la venta
         if (datetime.fromisoformat(lista1[i]['date_closed']) > datetime.fromisoformat(lista2[j]['date_closed'])):
             resultado.append(lista1[i])
             i += 1

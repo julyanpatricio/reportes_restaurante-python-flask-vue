@@ -5,7 +5,6 @@ resp = requests.get('https://storage.googleapis.com/backupdatadev/ejercicio/vent
 sales = merge_sort(json.loads(resp.content))
 
 
-
 salesGroupByCategories={}
 salesGroupByProducts={}
 salesGroupByWaiter={}
