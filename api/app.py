@@ -1,5 +1,5 @@
-from flask import Flask, jsonify, request
-import json, requests
+from flask import Flask 
+import json
 from flask_cors import CORS
 
 
