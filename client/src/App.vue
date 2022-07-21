@@ -7,22 +7,22 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex'
 import AppHeader from './components/AppHeader'
 import Filters from './components/Filters'
 
 export default {
   name: 'App',
-  components: { AppHeader,Filters },
+  components: { AppHeader, Filters },
   computed: {
-    currentRoutePath() {
-        return this.$route.path
+    currentRoutePath () {
+      return this.$route.path
     }
   },
   methods: {
-    ...mapActions(["getDateMinAndDateMax"])
+    ...mapActions(['getDateMinAndDateMax'])
   },
-  created() {
+  created () {
     this.getDateMinAndDateMax()
   }
 }

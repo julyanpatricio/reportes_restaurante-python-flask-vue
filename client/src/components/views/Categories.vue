@@ -22,23 +22,23 @@
 import { mapState, mapActions } from 'vuex'
 export default {
   computed: {
-    ...mapState(['salesByCategories','dateMinSelected','dateMaxSelected'])
+    ...mapState(['salesByCategories', 'dateMinSelected', 'dateMaxSelected'])
   },
   methods: {
     ...mapActions(['getSalesByCategories'])
   },
   created () {
-    this.getSalesByCategories({dateStart:this.dateMinSelected,dateEnd:this.dateMaxSelected})
+    this.getSalesByCategories({dateStart: this.dateMinSelected, dateEnd: this.dateMaxSelected})
   },
   watch: {
-    dateMinSelected: function (newData,oldData) {
-      if(newData!==oldData){
-        this.getSalesByCategories({dateStart:this.dateMinSelected,dateEnd:this.dateMaxSelected})
+    dateMinSelected: function (newData, oldData) {
+      if (newData !== oldData) {
+        this.getSalesByCategories({dateStart: this.dateMinSelected, dateEnd: this.dateMaxSelected})
       }
     },
-    dateMaxSelected: function (newData,oldData) {
-      if(newData!==oldData){
-        this.getSalesByCategories({dateStart:this.dateMinSelected,dateEnd:this.dateMaxSelected})
+    dateMaxSelected: function (newData, oldData) {
+      if (newData !== oldData) {
+        this.getSalesByCategories({dateStart: this.dateMinSelected, dateEnd: this.dateMaxSelected})
       }
     }
   }

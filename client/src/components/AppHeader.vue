@@ -32,18 +32,18 @@
 </template>
 
 <script>
-import router from "@/router";
+import router from '@/router'
 export default {
-  name: "app-header",
+  name: 'app-header',
   methods: {
-    redirectTo: (e) => router.push(e.target.value),
+    redirectTo: (e) => router.push(e.target.value)
   },
   computed: {
-    currentRoutePath() {
-      return this.$route.path;
-    },
-  },
-};
+    currentRoutePath () {
+      return this.$route.path
+    }
+  }
+}
 </script>
 
 <style scoped>

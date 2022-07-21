@@ -42,58 +42,57 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex'
 
 export default {
   data: () => {
-
     return {
-      currentPage: 1,
-    };
+      currentPage: 1
+    }
   },
   computed: {
-    ...mapState(["sales", "totalSales", "dateMinSelected", "dateMaxSelected"]),
+    ...mapState(['sales', 'totalSales', 'dateMinSelected', 'dateMaxSelected'])
   },
   methods: {
-    ...mapActions(["getSales"]),
-    filterByDate() {
+    ...mapActions(['getSales']),
+    filterByDate () {
       this.getSales({
         page: 1,
         dateStart: this.dateMinSelected,
-        dateEnd: this.dateMaxSelected,
-      });
-      this.currentPage = 1;
+        dateEnd: this.dateMaxSelected
+      })
+      this.currentPage = 1
     },
-    changePage() {
+    changePage () {
       this.getSales({
         page: this.currentPage,
         dateStart: this.dateMinSelected,
-        dateEnd: this.dateMaxSelected,
-      });
-    },
+        dateEnd: this.dateMaxSelected
+      })
+    }
   },
-  created() {
+  created () {
     // this.getSales({ page: 1 });
     this.filterByDate()
   },
   watch: {
-    dateMinSelected: function (newData,oldData) {
-      if(newData!==oldData){
-      this.filterByDate()
+    dateMinSelected: function (newData, oldData) {
+      if (newData !== oldData) {
+        this.filterByDate()
       }
     },
-    dateMaxSelected: function (newData,oldData) {
-      if(newData!==oldData){
-      this.filterByDate()
+    dateMaxSelected: function (newData, oldData) {
+      if (newData !== oldData) {
+        this.filterByDate()
       }
     },
-    currentPage: function (newData,oldData) {
-      if(newData!==oldData){
-      this.changePage();
+    currentPage: function (newData, oldData) {
+      if (newData !== oldData) {
+        this.changePage()
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style scoped>
