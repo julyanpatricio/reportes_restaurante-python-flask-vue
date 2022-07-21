@@ -4,7 +4,7 @@
       <span class="title">La pikada de la esquina</span>
     </router-link>
 
-    <select name="rutas" id="rutas" v-on:click="redirectTo">
+    <select name="rutas" id="rutas" @change="redirectTo">
       <option value="/" :disabled="currentRoutePath === '/'">home</option>
       <option value="/ventas" :disabled="currentRoutePath === '/ventas'">
         ventas generales
